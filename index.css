@@ -1,3 +1,7 @@
+/*  ------------------------------------------------------- 
+    Макет №1
+    На странице отображается 4 фотографии; */
+
 body {
     margin: 0;
     padding: 0;
@@ -10,17 +14,16 @@ article {
     height: 100%;
     width: 100%;
 
-    overflow-x: hidden;
+    overflow-x: scroll;
     overflow-y: hidden;    
 }
 
 .wrapper {
-    background-color: aqua;
-
     position: relative;
-   
+    height: 100%;
+    width: 97.5%;   
     margin: 0;
-    padding: 0;
+    padding: 6.5% 10% 0;
 
     list-style-type: none;
     white-space: nowrap;
@@ -31,18 +34,11 @@ article {
     
     display: inline-block;
     vertical-align: middle;
-    margin-top: 80px;
-    margin-right: 20px;
+    margin-right: 3%;
     padding: 20px;
 
     font-size: .6rem;
     line-height: .8rem;
-
-    background-color: blue;
-}
-
-.wrapper:first-child .vegetable_wrap {
-    margin-left: 80px;
 }
 
 img {
@@ -59,7 +55,7 @@ img {
 
 /*  -------------------------------------------------------
     Реализация макета №2
-    При наведении на фотографию появляется карточка с описанием */
+    При наведении на фотографию появляется карточка с описанием; */
 
 .check:not(:checked) + .vegetable_wrap:hover {
     position: relative;
@@ -69,20 +65,16 @@ img {
     box-shadow: 0px 0px 20px 1px rgba(0,0,0,1);
 }
 
-.check:not(:checked) + .vegetable_wrap:hover img {
-    position: relative;
-}
-
 .check:not(:checked) + .vegetable_wrap:hover .description {
-    clear: both;
     display: inline;
-    background-color: blueviolet;
 }
 
 /*  ------------------------------------------------------- 
     Реализация макета №3
-    При клике на фотографию появляется модальное окно 
-    с крупной версией фотографии */
+    При клике на фотографию появляется модальное окно с крупной версией фотографии;
+    Фотография должна вмещаться в экран, даже если она сама по себе больше него;
+    Под модальным окном — затемнение на всю страницу;
+    В правом верхнем углу — крестик, закрывающий модальное окно; */
 
 .check:checked + .vegetable_wrap {
     position: fixed;
@@ -166,17 +158,41 @@ img {
     display: none;
 }
 
-/*  -------------------------------------------------------  */
+/*  ------------------------------------------------------- 
+    Реализация макета №4
+    Под фотографиями — набор радиокнопок, по умолчанию выбран первый; 
+    При нажатии на второй фотографии прокручиваются слева направо и 
+    показывается второй блок из 4 фотографий; */
 
-.input_wrap {
+.shift1:checked ~ .wrapper .vegetable_wrap:nth-child(n+9) {
     display: none;
 }
-/*
-.right {
-    float: left;
-    height: 100%;
-    width: 80px;
-    background-color: rgb(255, 255, 255);
-    z-index: 1;
+
+.shift2:checked ~ .wrapper .vegetable_wrap:nth-child(n+13) {
+    display: none;
 }
-*/
+.shift2:checked ~ .wrapper .vegetable_wrap:nth-child(-n+5) {
+    display: none;
+}
+
+.shift3:checked ~ .wrapper .vegetable_wrap:nth-child(n+17) {
+    display: none;
+}
+.shift3:checked ~ .wrapper .vegetable_wrap:nth-child(-n+8) {
+    display: none;
+}
+
+.shift4:checked ~ .wrapper .vegetable_wrap:nth-child(n+21) {
+    display: none;
+}
+.shift4:checked ~ .wrapper .vegetable_wrap:nth-child(-n+12) {
+    display: none;
+}
+
+.shift5:checked ~ .wrapper .vegetable_wrap:nth-child(-n+16) {
+    display: none;
+}
+
+.shift {
+    display: none;
+}
