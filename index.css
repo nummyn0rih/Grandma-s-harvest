@@ -45,6 +45,22 @@ article {
     margin-left: 80px;
 }
 
+img {
+    vertical-align: middle;
+    max-width: 100%;
+    max-height: 100%;
+    margin-bottom: 5px;
+}
+
+.description {
+    white-space: normal;
+    display: none;
+}
+
+/*  -------------------------------------------------------
+    Реализация макета №2
+    При наведении на фотографию появляется карточка с описанием */
+
 .check:not(:checked) + .vegetable_wrap:hover {
     position: relative;
     background-color: white; 
@@ -63,12 +79,10 @@ article {
     background-color: blueviolet;
 }
 
-img {
-    vertical-align: middle;
-    max-width: 100%;
-    max-height: 100%;
-    margin-bottom: 5px;
-}
+/*  ------------------------------------------------------- 
+    Реализация макета №3
+    При клике на фотографию появляется модальное окно 
+    с крупной версией фотографии */
 
 .check:checked + .vegetable_wrap {
     position: fixed;
@@ -76,6 +90,8 @@ img {
     width: 100%;
     padding: 0;
     margin: 0;
+    top: 0;
+    left: 0;
     background-color: rgba(27, 27, 27, 0.95);
 }
 
@@ -87,16 +103,18 @@ img {
     transform: translateX(-50%);
 }
 
-.check:checked ~ .cap {
+.check:checked + .vegetable_wrap > .cap {
     position: fixed;
     display: block;
     height: 100%;
     width: 100%;
+    top: 0;
+    left: 0;
     background-color: rgba(255, 255, 255, 0);
     z-index: 1;
 }
 
-.check:checked ~ #1 {
+.check:checked + .vegetable_wrap > .closed {
     position: fixed;
     display: block;
     top: 27px;
@@ -106,17 +124,7 @@ img {
     z-index: 2;
 }
 
-.check:checked ~ #2 {
-    position: fixed;
-    display: block;
-    top: 27px;
-    right: 30px;
-    height: 40px;
-    width: 40px;
-    z-index: 2;
-}
-
-.check:checked ~ .closed .cl-1 {
+.check:checked + .vegetable_wrap > .closed .cl-1 {
     position: fixed;
     top: 45px;
     right: 30px;
@@ -129,7 +137,7 @@ img {
     transform-origin: center;
 }
 
-.check:checked ~ .closed .cl-2 {
+.check:checked + .vegetable_wrap > .closed .cl-2 {
     position: fixed;
     top: 45px;
     right: 30px;
@@ -142,13 +150,13 @@ img {
     transform-origin: center;
 }
 
-.check:checked ~ .closed:hover .cl-1 {
+.check:checked + .vegetable_wrap > .closed:hover .cl-1 {
     transform: scale(1.25) rotate(45grad);
     transform-origin: center;
     box-shadow: 0px 0px 20px 1px rgb(255, 255, 255);
 }
 
-.check:checked ~ .closed:hover .cl-2 {
+.check:checked + .vegetable_wrap > .closed:hover .cl-2 {
     transform: scale(1.25) rotate(-45grad);
     transform-origin: center;
     box-shadow: 0px 0px 20px 1px rgb(255, 255, 255);
@@ -158,8 +166,9 @@ img {
     display: none;
 }
 
-.description {
-    white-space: normal;
+/*  -------------------------------------------------------  */
+
+.input_wrap {
     display: none;
 }
 /*
@@ -171,6 +180,3 @@ img {
     z-index: 1;
 }
 */
-.input_wrap {
-    display: none;
-}
